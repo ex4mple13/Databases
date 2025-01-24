@@ -41,7 +41,7 @@ namespace PostgreConsoleInteractorCS
             Console.WriteLine("Input row id for delete");
             int row_id = int.Parse(Console.ReadLine());
             NpgsqlCommand delete_command = new NpgsqlCommand("DELETE FROM " + tables[selected_index] + " WHERE " + tables[selected_index] + "_id = " + row_id, connection);
-            //delete_command.ExecuteNonQuery();
+            delete_command.ExecuteNonQuery();
         }
 
         public void Update()
@@ -80,7 +80,7 @@ namespace PostgreConsoleInteractorCS
                         List<string> values = new List<string>();
                         foreach (string column in columns)
                         {
-                            values.Add(random.Next(0, 10).ToString());
+                            values.Add(random.Next(0, 150).ToString());
                         }
                         //values[values.Count - 1] = "1";
                         string insert_query = "INSERT INTO " + tables[selected_index] + " (" + ListToString(columns, false) + ") VALUES (" + ListToString(values, true) + ")";
